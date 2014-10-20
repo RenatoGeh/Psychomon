@@ -26,7 +26,7 @@ class Attack:
         self.ppi = self.ppc = pp # pp inicial e pp atual 
         
     "Produces the attack on target opponent."
-    def attack(self,me, opponent):
+    def attack(self, me, opponent):
         # Do attack stuff.
         pass     
         
