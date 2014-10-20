@@ -1,13 +1,15 @@
 import Pokemon
-import Pokeplayer
+import Pokebattle
 
 class Pokestadium:
-	"Pokestadium class constructor."
-	def __init__(self, p1, p2):
-		self.p1 = p1
-		self.p2 = p2
-
-	"It's time to du-du-du-duel!"
-	def fight():
-		
+    
+    "Manages the creation of a new pokebattle."
+    def new_battle(self):
+        pok1 = raw_input('enter the name of the first pokemon:')
+        pok2 = raw_input('enter the name of the second pokemon:')
+        
+        Pokebattle = Pokebattle(self.pok1,self.pok2)
+        winner = Pokebattle.fight()
+        
+        
 		

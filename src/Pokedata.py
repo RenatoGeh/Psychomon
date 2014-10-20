@@ -21,8 +21,8 @@ class Attack:
 		self.typ = typ
 		self.acu = acu
 		self.pwr = pwr
-		self.pp = pp
-
+		self.ppc = pp        #current pp of attack
+        self.ppi = pp        #initial pp of attack
 	"Produces the attack on target opponent."
 	def attack(self, opponent):
 		# Do attack stuff.
