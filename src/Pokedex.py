@@ -42,7 +42,7 @@ class Pokedex:
                     attacks.append(Attack(atk_name, atk_typ, acu, pwr, pp))
                     n_attacks = n_attacks - 1
                 
-                self.pokemons.append(Pokemon(att, attacks, *typ)
+                self.pokemons.append(Pokemon(att, attacks, *typ))
         except EOFError:
             pass
 
