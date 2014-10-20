@@ -6,7 +6,6 @@ __pycache__/
 *.so
 # Arquivos temporarios do gedit
 *.py~
-*.txt~
 
 # Distribution / packaging
 .Python

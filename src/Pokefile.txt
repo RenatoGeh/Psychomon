@@ -1,0 +1,45 @@
+Vkdaros
+23
+110
+30
+30
+40
+50
+13
+15
+4
+Falcon Punch
+9
+50
+180
+5
+Vkick
+1
+90
+80
+10
+Kiwi Dance
+13
+100
+60
+15
+Tese de Mestrado
+13
+50
+254
+5
+FarWil
+42
+400
+20
+20
+80
+200
+7
+1
+1
+HARDING
+7
+100
+0
+30

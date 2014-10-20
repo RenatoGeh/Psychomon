@@ -16,7 +16,7 @@ class Pokebattle:
         cur_pok = pokemon1 #current active pokemon
         cur_opp = pokemon2 #current opponent pokemon
         while(not self.pokemon1.hp or not self.pokemon2.hp):
-            s = repr(cur_pok.name) + ', it\'s your turn!\nHP:' + repr(cur_pok.current_atts.hp) + '/' + repr(cur_pok.atts.hp) + '\nAvailable moves:'  
+            s = repr(cur_pok.name) + ', it\'s your turn!\nYour HP:' + repr(cur_pok.current_atts.hp) + '/' + repr(cur_pok.atts.hp) + '\nAvailable moves:'  
             print(s)
             # Checks if the current pokemon can use any move.
             no_move = True
