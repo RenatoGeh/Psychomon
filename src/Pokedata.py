@@ -1,5 +1,7 @@
-POKE_TYPES = ("Normal", "Fighting", "Flying", "Poison", "Ground", "Rock", "Bird", "Bug", "Ghost", "Fire",
-    "Water", "Grass", "Electric", "Psychic", "Ice", "Dragon", "Blank")
+
+POKE_TYPES = ("Normal", "Fighting", "Flying", "Poison", "Ground", "Rock", "Bird", "Bug", "Ghost", "Fire", "Water", "Grass", "Electric", "Psychic", "Ice", "Dragon", "Blank")
+
+TYPE_BLANK = len(POKE_TYPES)-1
 
 class Attribute:
     "Attribute class constructor."
@@ -21,10 +23,10 @@ class Attack:
         self.typ = typ
         self.acu = acu
         self.pwr = pwr
-        self.ppc = pp        #current pp of attack
-        self.ppi = pp        #initial pp of attack
+        self.ppi = self.ppc = pp # pp inicial e pp atual 
+        
     "Produces the attack on target opponent."
-    def attack(self, opponent):
+    def attack(self,me, opponent):
         # Do attack stuff.
         pass     
         

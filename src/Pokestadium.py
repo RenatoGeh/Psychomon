@@ -12,4 +12,4 @@ class Pokestadium:
         winner = Pokebattle.fight()
         
         
-		
+        
