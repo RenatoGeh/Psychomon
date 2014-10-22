@@ -1,15 +1,10 @@
-import Pokemon
-import from Pokebattle Pokebattle
-import Pokedex
+from Pokebattle import Pokebattle
+from Pokedex import Pokedex
 
 class Pokestadium:
     
     "Manages the creation of a new pokebattle."
     def new_battle(self):
-        pok1 = Pokedex.Get_pokemon(input('enter the name of the first pokemon:'))
-        pok2 = Pokedex.Get_pokemon(input('enter the name of the second pokemon:'))
-        Pokebattle = Pokebattle(self.pok1,self.pok2)
-        winner = Pokebattle.fight()
-        
-        
+        Pokebattle = Pokebattle(Pokedex.get(input('Enter the name of the first pokemon: ')), Pokedex.get(input('Enter the name of the second pokemon: ')))
+        winner = Pokebattle.fight()        
         
