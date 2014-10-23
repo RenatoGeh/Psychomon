@@ -1,10 +1,11 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
+src/__pycache__/
+src/*.py[cod]
 
 # C extensions
 *.so
-# Arquivos temporarios do gedit
+
+# gedit temp files
 *.py~
 *.txt~
 
