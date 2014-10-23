@@ -5,19 +5,11 @@ class Pokedex:
     "Pokedex's constructor."
     def __init__(self):
         self.pokemons = ()
-        
-    "Searches for a type and returns its index from POKE_TYPES list."
-    def _search_type(self, query):
-        for i in range(0, len(POKE_TYPES)):
-            if query == POKE_TYPES[i]:
-                return i
-
-        return TYPE_BLANK   # Else returns Blank.
 
     "Reads from stdin a list of Pokemons."
     def read(self):
         try:
-            while(1):
+            while(True):
                 name = input()
                 level = int(input())
                 hp = int(input())
@@ -25,7 +17,7 @@ class Pokedex:
                 df = int(input())
                 spd = int(input())
                 spc = int(input())
-                typ = (_search_type(input()), _search_type(input()))
+                typ = (POKE_TYPES_INDEX[input()], POKE_TYPES_INDEX[input()])
                 
                 att = Attribute(hp, atk, df, spd, spc)
 
@@ -34,7 +26,7 @@ class Pokedex:
 
                 while(n_attacks):
                     atk_name = input()
-                    atk_typ = _search_type(input())
+                    atk_typ = POKE_TYPES_INDEX[input()]
                     acu = int(input())
                     pwr = int(input())
                     pp = int(input())
