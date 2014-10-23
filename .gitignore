@@ -8,6 +8,7 @@ src/*.py[cod]
 # gedit temp files
 *.py~
 *.txt~
+.gitignore~
 
 # Distribution / packaging
 .Python
