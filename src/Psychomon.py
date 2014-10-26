@@ -31,7 +31,7 @@ def main():
             break
         else:
             print('Opcao invalida\n')
-    print(' -- Adeus --  ')    
+    print(' -- Adeus --  ')
 
 
 main()
