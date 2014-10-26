@@ -3,7 +3,7 @@ from Pokemon import Pokemon
 
 class Pokedex:
     "List of Pokemons."
-    pokemons = {}   
+    pokemons = {}
 
     "Read single pokemon from stdin"
     @staticmethod
@@ -47,5 +47,7 @@ class Pokedex:
 
     @staticmethod
     def get(pokename):
+        if not pokename in Pokedex.pokemons:
+            return None
         return Pokedex.pokemons[pokename]
 
