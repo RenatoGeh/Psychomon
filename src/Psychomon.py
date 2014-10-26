@@ -6,7 +6,7 @@ def main():
     print('  -- Bem vindo ao Psychomon v0.1.2 --  \n')
     # Menu Principal
     while True:
-        print('\nOpcoes:\n[1] Ler pokemon\n[2] Batalhar\n[3] Sair\n\n')
+        print('\nOpcoes:\n[1] Ler pokemon\n[2] Listar Pokemons\n[3] Batalhar\n[4] Sair\n\n')
         try:
             opt = int(input('>: '))
         except ValueError:
@@ -26,8 +26,12 @@ def main():
                 print('\nDigite o seu pokemon:')
                 Pokedex.read_pokemon()
         elif opt == 2:
-            Pokestadium.new_battle()
+            print("\nPokemons:")
+            for poke in Pokedex.get_pokemons():
+                print("  %s" % poke.name)
         elif opt == 3:
+            Pokestadium.new_battle()
+        elif opt == 4:
             break
         else:
             print('Opcao invalida\n')

@@ -47,7 +47,10 @@ class Pokedex:
 
     @staticmethod
     def get(pokename):
-        if not pokename in Pokedex.pokemons:
-            return None
-        return Pokedex.pokemons[pokename]
+        return Pokedex.pokemons.get(pokename)
+
+    "Returns a pokemon list that can be iterated"
+    @staticmethod
+    def get_pokemons():
+        return Pokedex.pokemons.values()
 
