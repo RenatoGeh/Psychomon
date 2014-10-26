@@ -17,7 +17,7 @@ class Pokebattle:
                 x = int(x)
                 assert(x > 0)
                 assert(x < len(pokemon.atks))
-                assert(pokemon.atks[x - 1].ppc > 0)
+                assert(pokemon.atks[x - 1].current_pp > 0)
                 return x - 1
             except (ValueError, AssertionError):
                 print('You can\'t use that move!')
@@ -36,7 +36,7 @@ class Pokebattle:
 
             basic_atks = cur_pok.atks[0 : -1]
             for atk in basic_atks:
-                if atk.ppc:
+                if atk.current_pp:
                     no_move = False
                     break
             if no_move:
@@ -46,7 +46,7 @@ class Pokebattle:
             else:
                 for i, atk in enumerate(basic_atks):
                     # Prints each moves the pokemon has along with the corresponding pp.
-                    print(' %d - %s (%d/%d)' % (i + 1, atk.name, atk.ppc, atk.ppi))
+                    print(' %d - %s (%d/%d)' % (i + 1, atk.name, atk.current_pp, atk.base_pp))
 
                 cur_pok.attack(cur_opp, self.get_attack_id(cur_pok))
                     
