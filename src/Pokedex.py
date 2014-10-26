@@ -32,7 +32,7 @@ class Pokedex:
 
                 attacks.append(Attack(atk_name, atk_typ, acu, pwr, pp))
             
-            Pokedex.pokemons[name] = Pokemon(name, level, att, attacks, *typ)
+            Pokedex.pokemons[name.lower()] = Pokemon(name, level, att, attacks, *typ)
 
             return True
         except (EOFError, ValueError):
@@ -47,7 +47,7 @@ class Pokedex:
 
     @staticmethod
     def get(pokename):
-        return Pokedex.pokemons.get(pokename)
+        return Pokedex.pokemons.get(pokename.lower()).copy()
 
     "Returns a pokemon list that can be iterated"
     @staticmethod

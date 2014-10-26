@@ -1,5 +1,4 @@
 import Pokedata
-import copy
 
 class Pokemon:
     STRUGGLE = -1
@@ -9,7 +8,7 @@ class Pokemon:
         self.name = name
         self.lvl = lvl
         self.atts = atts
-        self.current_atts = copy.copy(atts) # Current attribute takes into account ATT altering attacks.
+        self.current_atts = atts.copy() # Current attribute takes into account ATT altering attacks.
         self.atks = atks
         self.types = (type1, type2)
         # The default struggle attack is present in all pokemon.
@@ -20,4 +19,8 @@ class Pokemon:
     "This pokemon attacks target opponent pokemon with given attack."
     def attack(self, opponent, atk_index):
         self.atks[atk_index].attack(self, opponent)
+
+    "Returns a copy of this pokemon"
+    def copy(self):
+        return Pokemon(self.name, self.lvl, self.atts.copy(), list(self.atks[0 : -1]), self.types[0], self.types[1])
         

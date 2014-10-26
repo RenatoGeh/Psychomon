@@ -36,7 +36,7 @@ class Attribute:
         self.spc = spc
     
     "Creates a cloned instance of same object."
-    def __copy__(self):
+    def copy(self):
         return Attribute(self.hp, self.atk, self.df, self.spd, self.spc)
 
 class Attack:
