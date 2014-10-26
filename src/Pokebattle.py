@@ -34,7 +34,8 @@ class Pokebattle:
             # Checks if the current pokemon can use any move.
             no_move = True
 
-            for atk in cur_pok.atks:
+            basic_atks = cur_pok.atks[0 : -1]
+            for atk in basic_atks:
                 if atk.ppc:
                     no_move = False
                     break
@@ -43,7 +44,7 @@ class Pokebattle:
                 print('You can\'t use any move!')
                 cur_pok.attack(cur_opp, Pokemon.STRUGGLE)
             else:
-                for i, atk in enumerate(cur_pok.atks[0 : -1]):
+                for i, atk in enumerate(basic_atks):
                     # Prints each moves the pokemon has along with the corresponding pp.
                     print(' %d - %s (%d/%d)' % (i + 1, atk.name, atk.ppc, atk.ppi))
 
