@@ -49,6 +49,11 @@ definiria quem começaria (o pokemon mais rapido), e organizaria os turnos de
 cada pokemon, mostrando os movimentos possíveis e imprimindo alguns de seus
 atributos e do seu oponente.
 
+    Implementar o dano foi um pouco trabalhoso, a fórmula não é tão simples
+quanto pensávamos, mas tirando escrever toda a tabela de type effectiveness 
+o resto foi bem rápido. Como já tinhamos deixado preparada o calculo do ataque
+antes, não foi necessário mudar nada fora da classe ataque, o que ajudou bastante.
+
     Apesar de vários testes terem sido feitos durante todo esse processo, ao
 terminar o sistema de batalha mais simples, começamos a criar pokemons com a
 finalidade de testar o combate. Essa criação inicial foi feita "criativamente",

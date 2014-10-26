@@ -78,6 +78,8 @@ class Attack:
             print('It\'s not very effective...')
 
         crit = 2 if random.random() < me.current_atts.spd / 512 else 1
+        if crit > 1:
+            print('Critical Hit!')
 
         mod = stab * typ_eff * crit * random.uniform(.85, 1)
         damage = int(damage * mod)
