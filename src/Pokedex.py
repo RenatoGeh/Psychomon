@@ -2,12 +2,12 @@ from Pokedata import *
 from Pokemon import Pokemon
 
 class Pokedex:
-    "Pokedex's constructor."
-    def __init__(self):
-        self.pokemons = []
+    "List of Pokemons."
+    pokemons = []    
 
     "Read single pokemon from stdin"
-    def read_pokemon(self):
+    @staticmethod
+    def read_pokemon():
         try:
             name = input()
             level = int(input())
@@ -32,7 +32,7 @@ class Pokedex:
 
                 attacks.append(Attack(atk_name, atk_typ, acu, pwr, pp))
             
-            self.pokemons.append(Pokemon(name, level, att, attacks, *typ))
+            Pokedex.pokemons.append(Pokemon(name, level, att, attacks, *typ))
 
             return True
         except (EOFError, ValueError):
@@ -40,13 +40,15 @@ class Pokedex:
         
 
     "Reads from stdin a list of Pokemons."
-    def read_all(self):
-        while(self.read_pokemon()):
+    @staticmethod
+    def read_all():
+        while(Pokedex.read_pokemon()):
             pass
 
-    def get(self, pokename):
+    @staticmethod
+    def get(pokename):
         # TODO: use table with names or something better.
-        for i in self.pokemons:
+        for i in Pokedex.pokemons:
             if i.name == pokename:
                 return i
         return None

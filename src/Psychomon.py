@@ -3,9 +3,6 @@ from Pokestadium import Pokestadium
 
 "Funcao central do exercicio programa"
 def main():
-    # Inicializacao
-    pokedex = Pokedex()
-    pokestadium = Pokestadium()
     print('  -- Bem vindo ao Psychomon v0.1.2 --  \n')
     # Menu Principal
     while True:
@@ -27,14 +24,14 @@ def main():
                 n = 1
             for i in range(n):
                 print('\nDigite o seu pokemon:')
-                pokedex.read_pokemon()
+                Pokedex.read_pokemon()
         elif opt == 2:
-            pokestadium.new_battle(pokedex)
+            Pokestadium.new_battle()
         elif opt == 3:
             break
         else:
             print('Opcao invalida\n')
-    print(' -- Adeus --  ')
+    print(' -- Adeus --  ')    
 
 
 main()

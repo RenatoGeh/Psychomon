@@ -1,5 +1,5 @@
 POKE_TYPES = ('Normal', 'Fighting', 'Flying', 'Poison', 'Ground', 'Rock', 'Bird', 'Bug', 'Ghost', 'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 'Blank')
-POKE_TYPES_INDEX = { poke_type: index for index, poke_type in enumerate(POKE_TYPES) }
+OKE_TYPES_INDEX = { poke_type: index for index, poke_type in enumerate(POKE_TYPES) }
 
 TYPE_BLANK = len(POKE_TYPES) - 1
 
@@ -28,5 +28,6 @@ class Attack:
     "Produces the attack on target opponent."
     def attack(self, me, opponent):
         # Do attack stuff.
+        self.ppc = self.ppc - 1
         opponent.current_atts.hp -= 10
         pass

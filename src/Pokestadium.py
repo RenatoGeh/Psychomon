@@ -1,16 +1,21 @@
 from Pokebattle import Pokebattle
+from Pokedex import Pokedex
 
 class Pokestadium:
-    
+    "The latest Pokemon winner."  
+    winner = None
+
     "Manages the creation of a new pokebattle."
-    def new_battle(self, pokedex):
+    @staticmethod
+    def new_battle():
         poke1 = None
         while poke1 == None:
-            poke1 = pokedex.get(input('Nome do primeiro pokemon: '))
+            poke1 = Pokedex.get(input('Nome do primeiro pokemon: '))
         poke2 = None
         while poke2 == None:
-            poke2 = pokedex.get(input('Nome do segundo pokemon: '))
+            poke2 = Pokedex.get(input('Nome do segundo pokemon: '))
         print('\n\n -- The Battle Begins -- ')
         battle = Pokebattle(poke1, poke2)
-        return battle.fight()        
+        Pokestadium.winner = battle.fight()
+        return Pokestadium.winner
         
