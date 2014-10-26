@@ -3,9 +3,9 @@ RELATÓRIO DE PROJETO: PSYCHOMON
 Integrantes:
 
 ~Guilherme Schützer - NUSP 8658544
-~Renato Geh         - NUSP xxxxxxx
+~Renato Geh         - NUSP 8536030
 ~Ricardo Lira       - NUSP 8536131
-~Yan Couto          - NUSP xxxxxxx
+~Yan Couto          - NUSP 8536023
 
 
 ################################
