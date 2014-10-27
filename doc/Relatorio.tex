@@ -1,34 +1,42 @@
-RELATÓRIO DE PROJETO: PSYCHOMON
+\documentclass[a4paper]{article}
 
-Integrantes:
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
 
-~Guilherme Schützer - NUSP 8658544
-~Renato Geh         - NUSP 8536030
-~Ricardo Lira       - NUSP 8536131
-~Yan Couto          - NUSP 8536023
+\title{Relatório de Projeto - Psychomon}
+
+\author{
+Guilherme Schützer - NUSP 8658544 \\
+Renato Geh         - NUSP 8536030 \\
+Ricardo Lira       - NUSP 8536131 \\
+Yan Couto          - NUSP 8536023
+}
+
+\date{}
+
+\begin{document}
+\maketitle
 
 
-################################
-##                            ##
-##      PRIMEIRA FASE         ##
-##                            ##
-################################
-       miau, eh isso ai
-         .-. \_/ .-.
-         \.-\/=\/.-/
-      '-./___|=|___\.-'
-     .--| \|/`"`\|/ |--.
-    (((_)\  .___.  /(_)))
-     `\ \_`-.   .-'_/ /`_
-       '.__       __.'(_))
-           /     \     //
-          |       |__.'/
-          \       /--'`
-      .--,-' .--. '----.
-     '----`--'  '--`----'
-     
-     
-    Na primeira fase do projeto, primeiramente planejamos o que fariamos e
+\section{Primeira Fase}
+
+\begin{verbatim}
+                          miau, eh isso ai
+                            .-. \_/ .-.
+                            \.-\/=\/.-/
+                         '-./___|=|___\.-'
+                        .--| \|/`"`\|/ |--.
+                       (((_)\  .___.  /(_)))
+                        `\ \_`-.   .-'_/ /`_
+                          '.__       __.'(_))
+                              /     \     //
+                             |       |__.'/
+                             \       /--'`
+                         .--,-' .--. '----.
+                        '----`--'  '--`----'
+\end{verbatim}
+
+ Na primeira fase do projeto, primeiramente planejamos o que fariamos e
 começamos a primeira parte do diagrama de classes. Após debater e discutir como
 cada parte desa fase iria se interagir, e com o diagrama feito, ficou mais fácil
 a programação e implementação das ideias.
@@ -37,21 +45,21 @@ a programação e implementação das ideias.
 pokemon, seus atributos, seus ataques, o que é um ataque, e como estes
 seriam usados. Ainda sem implementar as fórmulas de combate ou outras funções
 mais específicas, criamos duas classes que auxiliariam em organizar as
-batalhas e dados pro programa. A classe "pokedex" serve para "coletar" e
+batalhas e dados para o programa. A classe "Pokedex" serve para "coletar" e
 armazenar os pokemons e seus respectivos atributos/ataques, enquanto a classe
-"pokestadium" tem como objetivo ser um criador de batalhas, que organiza quais
+"Pokestadium" tem como objetivo ser um criador de batalhas, que organiza quais
 pokemons lutam, e inicializa o combate.
 
     Com essa base já preparada, começamos a planejar as lutas ("pokebattles"),
 que já teriam uma interface simples implementada para o usuário, de forma que
-seja visível o combate entre dois pokemons. A classe "pokebattle" então
+seja visível o combate entre dois pokemons. A classe "Pokebattle" então
 definiria quem começaria (o pokemon mais rapido), e organizaria os turnos de
 cada pokemon, mostrando os movimentos possíveis e imprimindo alguns de seus
 atributos e do seu oponente.
 
     Implementar o dano foi um pouco trabalhoso, a fórmula não é tão simples
 quanto pensávamos, mas tirando escrever toda a tabela de type effectiveness 
-o resto foi bem rápido. Como já tinhamos deixado preparada o calculo do ataque
+o resto foi bem rápido. Como já tinhamos deixado preparado o cálculo do ataque
 antes, não foi necessário mudar nada fora da classe ataque, o que ajudou bastante.
 
     Apesar de vários testes terem sido feitos durante todo esse processo, ao
@@ -61,3 +69,5 @@ inventando nomes e atributos aleatórios, sem se basear em pokemons existentes.
 Conforme fossemos arrumando alguns erros e bugs, começamos a pegar dados de
 sites como bulbapedia.com para nossos pokemons, adaptando as informações ao
 formato que nosso programa aceita como input.
+
+\end{document}

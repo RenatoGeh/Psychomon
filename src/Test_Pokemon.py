@@ -7,6 +7,9 @@ class TestPokemon(unittest.TestCase):
         self.p1 = Pokemon('p1', 1, Attribute(2, 3, 4, 5, 6), [Attack("atk", 7, 8, 9, 10)], 11)
         self.primitive = (int, float, str, tuple, dict, list)
 
+    def runTest(self):
+        super.runTest()
+
     def test_blank(self):
         self.assertEqual(TYPE_BLANK, self.p1.types[1], 'Second type failed to be attributed as Blank.')
 

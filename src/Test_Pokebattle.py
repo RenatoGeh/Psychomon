@@ -10,6 +10,9 @@ class TestPokebattle(unittest.TestCase):
         self.p2 = Pokemon("test_2", 2, Attribute(50, 2, 1, 1, 5), [Attack("atk_2", 2, 10, 1, 5)], 5, 7)
         self.battle = Pokebattle(self.p1, self.p2)
 
+    def runTest(self):
+        super.runTest()
+
     def test_assignment(self):
         self.assertIs(self.p1 if self.p1.current_atts.spd > self.p2.current_atts.spd else self.p2, self.battle.poke1, 
             "Speed test failed")

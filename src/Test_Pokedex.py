@@ -13,6 +13,9 @@ class TestPokedex(unittest.TestCase):
     def tearDown(self):
         sys.stdin = sys.__stdin__
 
+    def runTest(self):
+        super.runTest()
+
     def test_read_exception(self):
         p1 = Pokemon('p1', 1, Attribute(2, 3, 4, 5, 6), [Attack('atk', 7, 8, 9, 10)], 11, 12)
         
@@ -43,6 +46,12 @@ class TestPokedex(unittest.TestCase):
         Pokedex.read_pokemon()
 
         self.assertEqual(p1.name, Pokedex.get(p1.name).name)
+
+    def test_get_wrong(self):
+        try:
+            Pokedex.get("blah")
+        except:
+            self.fail('Shouldn\'t throw exception')
 
 
 if __name__ == '__main__':
