@@ -3,10 +3,12 @@ from Pokemon import Pokemon
 class Pokebattle:
     "Pokebattle class constructor."
     def __init__(self, poke1, poke2):
+        if poke2.current_atts.spd > poke1.current_atts.spd:
+            poke1, poke2 = poke2, poke1
         self.poke1 = poke1
         self.poke2 = poke2
 
-    def get_attack_id(self, pokemon):
+    def __get_attack_id(self, pokemon):
         while True:
             x = input('\nEnter the desired attack: ')
             print()
@@ -25,8 +27,6 @@ class Pokebattle:
         cur_pok = self.poke1 # Current active pokemon
         cur_opp = self.poke2 # Current opponent pokemon
         # Sorts pokemons by speed
-        if cur_opp.current_atts.spd > cur_pok.current_atts.spd:
-            cur_pok, cur_opp = cur_opp, cur_pok
 
         while(cur_pok.current_atts.hp > 0 and cur_opp.current_atts.hp > 0):
             print('\n%s (%d/%d HP) vs %s (%d/%d HP)' % ((self.poke1.name, self.poke1.current_atts.hp, self.poke1.atts.hp)
@@ -49,7 +49,7 @@ class Pokebattle:
                 print('You can\'t use any move!')
                 cur_pok.attack(cur_opp, Pokemon.STRUGGLE)
             else:
-                cur_pok.attack(cur_opp, self.get_attack_id(cur_pok))
+                cur_pok.attack(cur_opp, self.__get_attack_id(cur_pok))
                     
                 
             # Changes the current pokemon

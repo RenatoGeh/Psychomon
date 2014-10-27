@@ -3,7 +3,7 @@ from Pokemon import Pokemon
 
 class Pokedex:
     "List of Pokemons."
-    pokemons = {}
+    __pokemons = {}
 
     "Read single pokemon from stdin"
     @staticmethod
@@ -32,7 +32,7 @@ class Pokedex:
 
                 attacks.append(Attack(atk_name, atk_typ, acu, pwr, pp))
             
-            Pokedex.pokemons[name.lower()] = Pokemon(name, level, att, attacks, *typ)
+            Pokedex.__pokemons[name.lower()] = Pokemon(name, level, att, attacks, *typ)
 
             return True
         except (EOFError, ValueError):
@@ -47,10 +47,11 @@ class Pokedex:
 
     @staticmethod
     def get(pokename):
-        return Pokedex.pokemons.get(pokename.lower()).copy()
+        poke = Pokedex.__pokemons.get(pokename.lower())
+        return poke.copy() if poke else None
 
     "Returns a pokemon list that can be iterated"
     @staticmethod
     def get_pokemons():
-        return Pokedex.pokemons.values()
+        return Pokedex.__pokemons.values()
 
