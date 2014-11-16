@@ -70,4 +70,84 @@ Conforme fossemos arrumando alguns erros e bugs, começamos a pegar dados de
 sites como bulbapedia.com para nossos pokemons, adaptando as informações ao
 formato que nosso programa aceita como input.
 
+\newpage
+\section{Segunda Fase}
+
+\begin{verbatim}
+                       ."-,.__
+                       `.     `.  ,
+                    .--'  .._,'"-' `.
+                   .    .'         `'
+                   `.   /          ,'
+                     `  '--.   ,-"'           Crescer, Conquistar
+                      `"`   |  \
+                         -. \, |
+                          `--Y.'      ___.
+                               \     L._, \
+                     _.,        `.   <  <\                _
+                   ,' '           `, `.   | \            ( `
+                ../, `.            `  |    .\`.           \ \_
+               ,' ,..  .           _.,'    ||\l            )  '".
+              , ,'   \           ,'.-.`-._,'  |           .  _._`.
+            ,' /      \ \        `' ' `--/   | \          / /   ..\
+          .'  /        \ .         |\__ - _ ,'` `        / /     `.`.
+          |  '          ..         `-...-"  |  `-'      / /        . `.
+          | /           |L__           |    |          / /          `. `.
+         , /            .   .          |    |         / /             ` `
+        / /          ,. ,`._ `-_       |    |  _   ,-' /               ` \
+       / .           \"`_/. `-_ \_,.  ,'    +-' `-'  _,        ..,-.    \`.
+        '         .-f    ,'   `    '.       \__.---'     _   .'   '     \ \
+      ' /          `.'    l     .' /          \..      ,_|/   `.  ,'`     L`
+      |'      _.-""` `.    \ _,'  `            \ `.___`.'"`-.  , |   |    | \
+      ||    ,'      `. `.   '       _,...._        `  |    `/ '  |   '     .|
+      ||  ,'          `. ;.,.---' ,'       `.   `.. `-'  .-' /_ .'    ;_   ||
+      || '              V      / /           `   | `   ,'   ,' '.    !  `. ||
+      ||/            _,-------7 '              . |  `-'    l         /    `||
+       |          ,' .-   ,' ||               | .-.        `.      .'     ||
+       `'        ,'    `".'    |               |    `.        '. -.'       `'
+                /      ,'      |               |,'    \-.._,.'/'
+                .     /        .               .       \    .''
+              .`.    |         `.             /         :_,'.'
+                \ `...\   _     ,'-.        .'         /_.-'
+                 `-.__ `,  `'   .  _.>----''.  _  __  /
+                      .'        /"'          |  "'   '_
+                     /_|.-'\ ,".             '.'`__'-( \
+                       / ,"'"\,'               `/  `-.|"
+\end{verbatim}
+
+  A segunda fase do projeto foi bem diferente. Já tinhamos toda a base da primeira fase
+feita, o grande desafio foi aprender a usar novas bibliotecas para conseguir fazer tudo
+aquilo funcionar 'online'. Tinhamos pouca familiaridade com XML, então foi por ali que 
+começamos, já que o server e o cliente precisavam daquilo para funcionar.
+
+   Depois de pesquisar algumas bibliotecas e tutoriais de como criar, ler e validar XML's
+em Python, decidimos usar a \emph{lxml}, que também permite a validação dos XML's usando
+um xsd, que facilitou bastante a encontrar erros no projeto mais para frente, quando começamos
+a criar o server e o cliente.
+
+   Porém, tivemos uma grande dificuldade de usar essa biblioteca no Windows, tentando até
+mesmo compilar o seu código fonte, sem sucesso. Resolvemos então desenvolver mesmo no
+Linux, onde está biblioteca já vem instalada por padrão. Tirando essa dificuldade inicial,
+o resto de XML's não foi muito trabalhoso, apenas esforço braçal.
+
+   Depois de pronta essa parte, que criava XML's a partir de Pokemons e Pokemons a partir
+de XML's, começamos a criação da interface server/cliente. Para o server usamos a biblioteca
+\emph{flask}, que tornou bem fácil a criação de um server funcional, o fluxo da batalha foi meio
+diferent do normal, então tivemos que adaptar o resto do programa para isso. Para o cliente
+usamos \emph{requests}, e o processo foi bem parecido com a batalha normal.
+
+   A interação entre os dois demorou um pouco para ficar boa, tivemos algumas dificuldades
+em mandar e receber dados, mas com um pouco de tempo resolvemos isso. A primeira batalha
+usando dois terminais diferentes foi bem divertida.
+
+   Um 'problema' que encontramos é que fazendo as coisas exatamente como é dito no enunciado
+do EP, não é possível saber o HP inicial e PP's iniciais dos ataques da parte do servidor (a 
+menos que sejam usadas \emph{gambiarras}) e muito menos da parte do cliente. Além disso, o
+cliente fica sem nenhuma indicação de quais ataques foram usados pelo servidor e quanto dano
+os ataques causaram (além das informações adicionais).
+
+   Por último, também tivemos que arrumar o idioma do EP, já que em partes a comunicação com
+o usuário se dava em inglês e outras em português. Escolhemos mudar tudo para XXXX.
+
+
 \end{document}
