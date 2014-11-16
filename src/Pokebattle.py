@@ -38,12 +38,20 @@ class Pokebattle:
         return Pokebattle.is_battle_over(self.poke1, self.poke2)
 
     @staticmethod
+    def show_less_info(pok1, pok2):
+        print('\n%s (%d HP) vs %s (%d HP)' % (pok1.name, pok1.current_atts.hp, pok2.name, pok2.current_atts.hp))
+        print('\n%s, it\'s your turn!\n\nAvailable moves:' % pok1.name)
+        for i, atk in enumerate(pok1.atks[0 : -1]):
+            # Prints each moves the pokemon has along with the corresponding pp.
+            print(' %d - %s (%d PP)' % (i + 1, atk.name, atk.current_pp))
+
+
+    @staticmethod
     def show_info(pok1, pok2):
         print('\n%s (%d/%d HP) vs %s (%d/%d HP)' % ((pok1.name, pok1.current_atts.hp, pok1.atts.hp)
             + (pok2.name, pok2.current_atts.hp, pok2.atts.hp)))
         print('\n%s, it\'s your turn!\n\nHP: %d/%d\nAvailable moves:' % (pok1.name, pok1.current_atts.hp, pok1.atts.hp))
-        basic_atks = pok1.atks[0 : -1]
-        for i, atk in enumerate(basic_atks):
+        for i, atk in enumerate(pok1.atks[0 : -1]):
             # Prints each moves the pokemon has along with the corresponding pp.
             print(' %d - %s (%d/%d)' % (i + 1, atk.name, atk.current_pp, atk.base_pp))
 

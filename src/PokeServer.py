@@ -15,7 +15,7 @@ def _start_battle(poke1):
     poke2 = Pokestadium.choose_pokemon('Escolha seu pokemon: ')
     # if server's pokemon is the first, attack
     if poke2.current_atts.spd > poke1.current_atts.spd:
-        Pokebattle.show_info(poke2, poke1)
+        Pokebattle.show_less_info(poke2, poke1)
         poke2.attack(poke1, Pokebattle.get_attack_id(poke2))
     return _get_xml(poke1, poke2), 200
 
@@ -54,7 +54,7 @@ def _process_attack(i):
         pok1.attack(pok2, i - 1)
         if Pokebattle.is_battle_over(pok1, pok2):
             return _battle_over(pok1, pok2)
-        Pokebattle.show_info(pok2, pok1)
+        Pokebattle.show_less_info(pok2, pok1)
         pok2.attack(pok1, Pokebattle.get_attack_id(pok2))
         if Pokebattle.is_battle_over(pok1, pok2):
             return _battle_over(pok1, pok2)
@@ -74,4 +74,4 @@ def _process_attack(i):
 
 def start_server():
     print('----- Modo Servidor -----\n')
-    app.run(port = 8080, debug = True, use_reloader = False)
+    app.run('0.0.0.0', port = 8080, debug = True, use_reloader = False)
