@@ -9,9 +9,6 @@ class TestPokedata(unittest.TestCase):
         self.atk_1 = Attack('atk_1', 1, 2, 3, 4)
         self.atk_2 = Attack('atk_2', 5, 6, 7, 8)
 
-    def runTest(self):
-        super.runTest()
-
     def test_copy_attribute(self):
         cpy_1 = self.att_1.copy()
         cpy_2 = self.att_2.copy()
