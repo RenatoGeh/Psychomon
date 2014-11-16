@@ -15,6 +15,7 @@ def _start_battle(poke1):
     poke2 = Pokestadium.choose_pokemon('Escolha seu pokemon: ')
     # if server's pokemon is the first, attack
     if poke2.current_atts.spd > poke1.current_atts.spd:
+        Pokebattle.show_info(poke2, poke1)
         poke2.attack(poke1, Pokebattle.get_attack_id(poke2))
     return _get_xml(poke1, poke2), 200
 

@@ -31,7 +31,7 @@ def start_client():
             pok1 = XMLManager.get_pokemon(xml[0])
             pok2 = XMLManager.get_pokemon(xml[1])
         w = Pokebattle.finish_battle(pok1, pok2)
-        print('%d venceu.\n' % w.name)
+        print('%s venceu.\n' % w.name)
     except ET.XMLSyntaxError:
         print('Recebido XML com erro')
     except AssertionError:

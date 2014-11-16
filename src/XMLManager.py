@@ -20,11 +20,11 @@ def get_xml(poke1, poke2=None):
         _add_attr(pk, 'name', poke.name)
         _add_attr(pk, 'level', poke.lvl)
         atts = ET.SubElement(pk, 'attributes')
-        _add_attr(atts, 'health', poke.atts.hp)
-        _add_attr(atts, 'attack', poke.atts.atk)
-        _add_attr(atts, 'defense', poke.atts.df)
-        _add_attr(atts, 'speed', poke.atts.spd)
-        _add_attr(atts, 'special', poke.atts.spc)
+        _add_attr(atts, 'health', 0 if poke.current_atts.hp < 0 else poke.current_atts.hp)
+        _add_attr(atts, 'attack', poke.current_atts.atk)
+        _add_attr(atts, 'defense', poke.current_atts.df)
+        _add_attr(atts, 'speed', poke.current_atts.spd)
+        _add_attr(atts, 'special', poke.current_atts.spc)
 
         _add_attr(pk, 'type', poke.types[0])
         _add_attr(pk, 'type', poke.types[1])
@@ -37,7 +37,7 @@ def get_xml(poke1, poke2=None):
             _add_attr(atks, 'type', atk.typ)
             _add_attr(atks, 'power', atk.pwr)
             _add_attr(atks, 'accuracy', atk.acu)
-            _add_attr(atks, 'power_points', atk.base_pp)
+            _add_attr(atks, 'power_points', atk.current_pp)
     return bs
 
 def get_pokemon(p):
