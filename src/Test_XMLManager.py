@@ -35,9 +35,8 @@ class TestXMLManager(unittest.TestCase):
             self.fail('Created XML has wrong data.')
 
 
-
     def test_wrong_xml(self):
-        xml = ET.parse(io.StringIO('<battle_state><wrong></wrong></battle_state>'))
+        xml = ET.parse(io.StringIO(u'<battle_state><wrong></wrong></battle_state>'))
         self.assertFalse(XMLManager.check_xml(xml), 'Not detecting wrong xml.')
 
 if __name__ == '__main__':

@@ -1,4 +1,6 @@
 import lxml.etree as ET
+from Pokemon import Pokemon
+from Pokedata import Attribute, Attack
 
 with open('resources/pokemon.xsd', 'r') as f:
     validator = ET.XMLSchema(ET.parse(f))
@@ -37,3 +39,19 @@ def get_xml(poke1, poke2=None):
             _add_attr(atks, 'accuracy', atk.acu)
             _add_attr(atks, 'power_points', atk.base_pp)
     return bs
+
+def get_pokemon(p):
+    at = p[2]
+    attr = Attribute(int(at[0].text), int(at[1].text), int(at[2].text), int(at[3].text), int(at[4].text))
+    atks = [None, None, None, None]
+    i = 5
+    while True:
+        try:
+            at = p[i]
+            atks[int(at[0].text) - 1] = Attack(at[1].text, int(at[2].text), int(at[4].text), int(at[3].text), int(at[5].text))
+            i += 1
+        except IndexError:
+            break
+    while atks[-1] == None:
+        atks.pop()
+    return Pokemon(p[0].text, int(p[1].text), attr, atks, int(p[3].text), int(p[4].text))

@@ -8,18 +8,64 @@ class Pokebattle:
         self.poke1 = poke1
         self.poke2 = poke2
 
-    def __get_attack_id(self, pokemon):
-        while True:
-            x = input('\nEnter the desired attack: ')
-            print()
-            try:
-                x = int(x)
-                assert(x > 0)
-                assert(x < len(pokemon.atks))
-                assert(pokemon.atks[x - 1].current_pp > 0)
-                return x - 1
-            except (ValueError, AssertionError):
-                print('You can\'t use that move!')
+    @staticmethod 
+    def is_valid_id(pokemon, i):
+        return i > 0 and i < len(pokemon.atks) and pokemon.atks[i - 1].current_pp > 0
+
+    @staticmethod
+    def get_attack_id(pokemon):
+        if pokemon.has_moves():
+            while True:
+                x = input('\nEnter the desired attack: ')
+                print()
+                try:
+                    x = int(x)
+                    assert(Pokebattle.is_valid_id(pokemon, x))
+                    return x - 1
+                except (ValueError, AssertionError):
+                    print('You can\'t use that move!')
+        else:
+            # If a pokemon has no moves left, it must use struggle
+            print('You can\'t use any move!')
+            return Pokemon.STRUGGLE
+
+    @staticmethod
+    def is_battle_over(pok1, pok2):
+        return pok1.current_atts.hp <= 0 or pok2.current_atts.hp <= 0
+
+    @property
+    def is_over(self):
+        return Pokebattle.is_battle_over(self.poke1, self.poke2)
+
+    @staticmethod
+    def show_info(pok1, pok2):
+        print('\n%s (%d/%d HP) vs %s (%d/%d HP)' % ((pok1.name, pok1.current_atts.hp, pok1.atts.hp)
+            + (pok2.name, pok2.current_atts.hp, pok2.atts.hp)))
+        print('\n%s, it\'s your turn!\n\nHP: %d/%d\nAvailable moves:' % (pok1.name, pok1.current_atts.hp, pok1.atts.hp))
+        basic_atks = pok1.atks[0 : -1]
+        for i, atk in enumerate(basic_atks):
+            # Prints each moves the pokemon has along with the corresponding pp.
+            print(' %d - %s (%d/%d)' % (i + 1, atk.name, atk.current_pp, atk.base_pp))
+
+    @staticmethod
+    def finish_battle(pok1, pok2):
+        assert(Pokebattle.is_battle_over(pok1, pok2))
+        winner = None
+        if pok1.current_atts.hp > 0:
+            print(pok2.name + ' fainted!')
+            winner = pok1
+        elif pok2.current_atts.hp > 0:
+            print(pok1.name + ' fainted!')
+            winner = pok2
+        else:
+            print(pok1.name + ' and ' + pok2.name + ' fainted!\nIt\'s a draw!')
+            winner = None
+
+        return winner
+
+
+    def _finish_fight(self):
+        return Pokebattle.finish_battle(self.poke1, self.poke2)
     
     "Starts the battle between two pokemons."
     def fight(self):
@@ -28,41 +74,12 @@ class Pokebattle:
         cur_opp = self.poke2 # Current opponent pokemon
         # Sorts pokemons by speed
 
-        while(cur_pok.current_atts.hp > 0 and cur_opp.current_atts.hp > 0):
-            print('\n%s (%d/%d HP) vs %s (%d/%d HP)' % ((self.poke1.name, self.poke1.current_atts.hp, self.poke1.atts.hp)
-                + (self.poke2.name, self.poke2.current_atts.hp, self.poke2.atts.hp)))
-            print('\n%s, it\'s your turn!\n\nHP: %d/%d\nAvailable moves:' % (cur_pok.name, cur_pok.current_atts.hp, cur_pok.atts.hp))
-            basic_atks = cur_pok.atks[0 : -1]
-            for i, atk in enumerate(basic_atks):
-                # Prints each moves the pokemon has along with the corresponding pp.
-                print(' %d - %s (%d/%d)' % (i + 1, atk.name, atk.current_pp, atk.base_pp))
+        while not self.is_over:
+            Pokebattle.show_info(cur_pok, cur_opp)
 
-            # Checks if the current pokemon can use any move.
-            no_move = True
+            cur_pok.attack(cur_opp, Pokebattle.get_attack_id(cur_pok))
 
-            for atk in basic_atks:
-                if atk.current_pp > 0:
-                    no_move = False
-                    break
-            if no_move:
-                # If a pokemon has no moves left, it must use struggle
-                print('You can\'t use any move!')
-                cur_pok.attack(cur_opp, Pokemon.STRUGGLE)
-            else:
-                cur_pok.attack(cur_opp, self.__get_attack_id(cur_pok))
-                    
-                
             # Changes the current pokemon
             cur_pok, cur_opp = cur_opp, cur_pok
+        return self._finish_fight()
             
-        if cur_pok.current_atts.hp > 0:
-            print(cur_opp.name + ' fainted!')
-            winner = cur_pok
-        elif cur_opp.current_atts.hp > 0:
-            print(cur_pok.name + ' fainted!')
-            winner = cur_opp
-        else:
-            print(cur_pok.name + ' and ' + cur_opp.name + ' fainted!\nIt\'s a draw!')
-            winner = None
-
-        return winner

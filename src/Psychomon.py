@@ -1,12 +1,14 @@
 from Pokedex import Pokedex
 from Pokestadium import Pokestadium
+import PokeServer
+import PokeClient
 
 "Funcao central do exercicio programa"
 def main():
     print('  -- Bem vindo ao Psychomon v0.1.2 --  \n')
     # Menu Principal
     while True:
-        print('\nOpcoes:\n[1] Ler pokemon\n[2] Listar Pokemons\n[3] Batalhar\n[4] Sair\n\n')
+        print('\nOpcoes:\n[1] Ler pokemon\n[2] Listar Pokemons\n[3] Batalhar\n[4] Abrir Servidor\n[5] Abrir Cliente\n[6] Sair\n\n')
         try:
             opt = int(input('>: '))
         except ValueError:
@@ -32,6 +34,10 @@ def main():
         elif opt == 3:
             Pokestadium.new_battle()
         elif opt == 4:
+            PokeServer.start_server()
+        elif opt == 5:
+            PokeClient.start_client()
+        elif opt == 6:
             break
         else:
             print('Opcao invalida\n')

@@ -15,6 +15,12 @@ class Pokemon:
         self.atks.append(Pokedata.Attack('Struggle', 0, 100, 50, float('inf')))
         # Tuples are faster and 'safer'
         self.atks = tuple(self.atks)
+
+    def has_moves(self):
+        for i in range(0, len(self.atks) - 1):
+            if self.atks[i].current_pp > 0:
+                return True
+        return False
     
     "This pokemon attacks target opponent pokemon with given attack."
     def attack(self, opponent, atk_index):
