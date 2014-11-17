@@ -1,14 +1,15 @@
-from Test_Pokebattle import TestPokebattle
-from Test_Pokedata import TestPokedata
-from Test_Pokedex import TestPokedex
-from Test_Pokemon import TestPokemon
-from Test_XMLManager import TestXMLManager
+from tests import Test_Pokebattle
+from tests import Test_Pokedata
+from tests import Test_Pokedex
+from tests import Test_Pokemon
+from tests import Test_XMLManager
+
 import unittest
 
 def runTest(class_name):
     print('*********** Running %s Tests ***********' % class_name)
     suite = unittest.TestSuite()
-    cl = eval('Test%s' % class_name)
+    cl = eval('Test_' + class_name + '.Test' + class_name)
     for method in dir(cl):
        if method.startswith("test"):
           suite.addTest(cl(method))

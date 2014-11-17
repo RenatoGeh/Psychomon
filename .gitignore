@@ -1,6 +1,8 @@
 # Byte-compiled / optimized / DLL files
 src/__pycache__/
 src/*.py[cod]
+src/tests/__pycache__
+src/tests/*.py[cod]
 
 # C extensions
 *.so
