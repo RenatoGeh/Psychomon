@@ -18,7 +18,7 @@ class TestPokedex(unittest.TestCase):
         
         sys.stdin = io.StringIO(u'p1\nd\nwhat\n3.4\nthe\n5.5\nhell\n11\n12\n1\natk\n7\n8\n9\n10')        
 
-        self.assertFalse(Pokedex.read_pokemon(), "Pokedex exception not being caught.")
+        self.assertFalse(Pokedex.read_pokemon(), "Pokédex exception not being caught.")
 
 
     def test_read(self):
@@ -36,9 +36,9 @@ class TestPokedex(unittest.TestCase):
                 self.assertEqual(val, eval('p2.' + member))
 
     def test_get(self):
-        p1 = Pokemon('PoKeMoN', 1, Attribute(2, 3, 4, 5, 6), [Attack('atk', 7, 8, 9, 10)], 11, 12)
+        p1 = Pokemon('PoKéMoN', 1, Attribute(2, 3, 4, 5, 6), [Attack('atk', 7, 8, 9, 10)], 11, 12)
 
-        sys.stdin = io.StringIO(u'PoKeMoN\n1\n2\n3\n4\n5\n6\n11\n12\n1\natk\n7\n8\n9\n10')
+        sys.stdin = io.StringIO(u'PoKéMoN\n1\n2\n3\n4\n5\n6\n11\n12\n1\natk\n7\n8\n9\n10')
 
         Pokedex.read_pokemon()
 

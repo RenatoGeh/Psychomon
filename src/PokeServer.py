@@ -11,8 +11,9 @@ def _get_xml(pok1, pok2 = None):
     return ET.tostring(XMLManager.get_xml(pok1, pok2)).decode('utf-8')
 
 def _start_battle(poke1):
-    print('Um novo competidor aparece!\nEle(a) está usando %s\n' % poke1.name)
-    poke2 = Pokestadium.choose_pokemon('Escolha seu pokemon: ')
+    print('A challenger approaches!\n')
+    poke2 = Pokestadium.choose_pokemon('Choose your pokémon: ')
+    print('The challenger sent out %s\n' % poke1.name)
     # if server's pokemon is the first, attack
     if poke2.current_atts.spd > poke1.current_atts.spd:
         Pokebattle.show_less_info(poke2, poke1)
@@ -35,7 +36,7 @@ def _start_battle_request():
 
 def _battle_over(p1, p2):
     w = Pokebattle.finish_battle(p1, p2)
-    print('%s venceu.\n\n' % w.name)
+    print('%s won.\n\n' % w.name)
     return _get_xml(p1, p2), 200
 
 
@@ -73,5 +74,5 @@ def _process_attack(i):
 
 
 def start_server():
-    print('----- Modo Servidor -----\n')
+    print('----- Server Mode -----\n')
     app.run('0.0.0.0', port = 8080, debug = True, use_reloader = False)

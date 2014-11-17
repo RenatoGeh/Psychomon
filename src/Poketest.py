@@ -15,7 +15,7 @@ def runTest(class_name):
     unittest.TextTestRunner().run(suite)
     print('************************************************\n')
 
-"Funcao que executa todos os testes do exercicio programa"
+"Runs all the tests available"
 def main():
     for test in ('Pokebattle', 'Pokedata', 'Pokedex', 'Pokemon', 'XMLManager'):
         runTest(test)

@@ -3,32 +3,32 @@ from Pokestadium import Pokestadium
 import PokeServer
 import PokeClient
 
-"Funcao central do exercicio programa"
+"Main function"
 def main():
-    print('  -- Bem vindo ao Psychomon v0.1.2 --  \n')
+    print('  -- Welcome to Psychomon v0.1.2 --  \n')
     # Menu Principal
     while True:
-        print('\nOpcoes:\n[1] Ler pokemon\n[2] Listar Pokemons\n[3] Batalhar\n[4] Abrir Servidor\n[5] Abrir Cliente\n[6] Sair\n\n')
+        print('\nOptions:\n[1] Read pokémon\n[2] List pokémon\n[3] Battle!\n[4] Open Server\n[5] Open Client\n[6] Quit\n\n')
         try:
             opt = int(input('>: '))
         except ValueError:
-            print('Opcao invalida\n')
+            print('Invalid option\n')
             continue
         except EOFError:
             break
 
         if opt == 1:
-            n = input('Quantos pokemos deseja ler? ')
+            n = input('How many pokémon to read? ')
             try:
                 n = int(n)
                 assert(n >= 0)
             except ValueError:
                 n = 1
             for i in range(n):
-                print('\nDigite o seu pokemon:')
+                print('\nEnter your pokémon:')
                 Pokedex.read_pokemon()
         elif opt == 2:
-            print("\nPokemons:")
+            print("\nPokémon:")
             for poke in Pokedex.get_pokemons():
                 print("  %s" % poke.name)
         elif opt == 3:
@@ -40,8 +40,8 @@ def main():
         elif opt == 6:
             break
         else:
-            print('Opcao invalida\n')
-    print(' -- Adeus --  ')
+            print('Invalid option\n')
+    print(' -- Farewell --  ')
 
 
 main()

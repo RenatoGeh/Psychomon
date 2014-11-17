@@ -11,8 +11,8 @@ def _get_xml(pok1, pok2 = None):
     return ET.tostring(XMLManager.get_xml(pok1, pok2), pretty_print = True).decode('utf-8')
 
 def start_client():
-    print('----- Modo Cliente -----\n')
-    ip = input('Digite o ip desejado: ')
+    print('----- Client Mode -----\n')
+    ip = input('Enter the desired IP: ')
     pok = Pokestadium.choose_pokemon()
     req = requests.post(_full_ip(ip) + 'battle', data = _get_xml(pok))
     try:
@@ -31,11 +31,11 @@ def start_client():
             pok1 = XMLManager.get_pokemon(xml[0])
             pok2 = XMLManager.get_pokemon(xml[1])
         w = Pokebattle.finish_battle(pok1, pok2)
-        print('%s venceu.\n' % w.name)
+        print('%s won.\n' % w.name)
     except ET.XMLSyntaxError:
-        print('Recebido XML com erro')
+        print('Received faultful XML.')
     except AssertionError:
         if req.status_code == 423:
-            print('Server disse que eu estou errado :(')
+            print('Server told me I\'m wrong :(')
         else:
-            print('XML não aceito')
+            print('XML not accepted.')

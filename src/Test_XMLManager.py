@@ -8,20 +8,20 @@ import lxml.etree as ET
 
 class TestXMLManager(unittest.TestCase):
     def test_get_xml(self):
-        p = Pokemon('PoKeMoN', 1, Attribute(2, 3, 4, 5, 6), [Attack('atk', 7, 8, 9, 10)], 11, 12)
+        p = Pokemon('PoKéMoN', 1, Attribute(2, 3, 4, 5, 6), [Attack('atk', 7, 8, 9, 10)], 11, 12)
         self.assertTrue(XMLManager.check_xml(XMLManager.get_xml(p)), 'Generating invalid XML.')
 
     def test_two_pokemons(self):
-        p1 = Pokemon('PoKeMoN1', 1, Attribute(2, 3, 4, 5, 6), [Attack('atk', 7, 8, 9, 10)], 11, 12)
-        p2 = Pokemon('PoKeMoN2', 2, Attribute(3, 4, 5, 6, 7), [Attack('atk', 8, 9, 10, 11)], 12, 13)
+        p1 = Pokemon('PoKéMoN1', 1, Attribute(2, 3, 4, 5, 6), [Attack('atk', 7, 8, 9, 10)], 11, 12)
+        p2 = Pokemon('PoKéMoN2', 2, Attribute(3, 4, 5, 6, 7), [Attack('atk', 8, 9, 10, 11)], 12, 13)
         x = XMLManager.get_xml(p1, p2)
-        self.assertEqual(len(x), 2, 'XML doesn\'t have 2 pokemons')
+        self.assertEqual(len(x), 2, 'XML doesn\'t have 2 pokémon')
 
     def test_content(self):
-        p = Pokemon('PoKeMoN', 1, Attribute(2, 3, 4, 5, 6), [Attack('atk', 7, 9, 8, 10)], 11, 12)
+        p = Pokemon('PoKéMoN', 1, Attribute(2, 3, 4, 5, 6), [Attack('atk', 7, 9, 8, 10)], 11, 12)
         pok = XMLManager.get_xml(p)[0]
         try:
-            assert(pok[0].text == 'PoKeMoN')
+            assert(pok[0].text == 'PoKéMoN')
             assert(pok[1].text == '1')
             for i in range(2, 6):
                 assert(pok[2][i - 2].text == str(i))
