@@ -21,7 +21,7 @@ Yan Couto          - NUSP 8536023
 \section{Primeira Fase}
 
 \begin{verbatim}
-                          miau, eh isso ai
+                          Miau, é isso ai
                             .-. \_/ .-.
                             \.-\/=\/.-/
                          '-./___|=|___\.-'
@@ -118,36 +118,39 @@ formato que nosso programa aceita como input.
   A segunda fase do projeto foi bem diferente. Já tinhamos toda a base da primeira fase
 feita, o grande desafio foi aprender a usar novas bibliotecas para conseguir fazer tudo
 aquilo funcionar 'online'. Tinhamos pouca familiaridade com XML, então foi por ali que 
-começamos, já que o server e o cliente precisavam daquilo para funcionar.
+começamos, já que o servidor e o cliente precisavam daquilo para funcionar.
 
    Depois de pesquisar algumas bibliotecas e tutoriais de como criar, ler e validar XML's
 em Python, decidimos usar a \emph{lxml}, que também permite a validação dos XML's usando
-um xsd, que facilitou bastante a encontrar erros no projeto mais para frente, quando começamos
-a criar o server e o cliente.
+um xsd, que ao vançar no projeto, se mostrou muito útil para encontrar erros, especialmente quando
+começamos a criar o servidor e o cliente.
 
    Porém, tivemos uma grande dificuldade de usar essa biblioteca no Windows, tentando até
-mesmo compilar o seu código fonte, sem sucesso. Resolvemos então desenvolver mesmo no
-Linux, onde está biblioteca já vem instalada por padrão. Tirando essa dificuldade inicial,
-o resto de XML's não foi muito trabalhoso, apenas esforço braçal.
+mesmo compilar o seu código fonte, sem sucesso. Resolvemos portanto desenvolver o projeto no
+Linux, onde está biblioteca já vem instalada por padrão. 
 
-   Depois de pronta essa parte, que criava XML's a partir de Pokemons e Pokemons a partir
-de XML's, começamos a criação da interface server/cliente. Para o server usamos a biblioteca
-\emph{flask}, que tornou bem fácil a criação de um server funcional, o fluxo da batalha foi meio
-diferent do normal, então tivemos que adaptar o resto do programa para isso. Para o cliente
-usamos \emph{requests}, e o processo foi bem parecido com a batalha normal.
+    Tirando essa dificuldade inicial, o resto de XML's não foi muito trabalhoso, apenas
+esforço braçal.
 
-   A interação entre os dois demorou um pouco para ficar boa, tivemos algumas dificuldades
-em mandar e receber dados, mas com um pouco de tempo resolvemos isso. A primeira batalha
+   Depois de pronta essa parte, já conseguimos um programa que cria XML's a partir de
+Pokemons e Pokemons a partir de XML's. Então começamos a criação da interface servidor/cliente.
+Para o servidor usamos a biblioteca \emph{flask}, que tornou bem fácil a criação de um servidor
+funcional. O fluxo da batalha foi um pouco diferente do normal, por isso tivemos que adaptar
+parte do programa para isso. Para o cliente usamos \emph{requests}, e o processo foi bem parecido
+com a batalha normal.
+
+   A interação entre os dois demorou um pouco para ficar boa, ocorreram algumas dificuldades
+para organizar o fluxo de dados, mas com um pouco de tempo conseguimos resolver. A primeira batalha
 usando dois terminais diferentes foi bem divertida.
 
    Um 'problema' que encontramos é que fazendo as coisas exatamente como é dito no enunciado
 do EP, não é possível saber o HP inicial e PP's iniciais dos ataques da parte do servidor (a 
-menos que sejam usadas \emph{gambiarras}) e muito menos da parte do cliente. Além disso, o
+menos que \emph{gambiarras} sejam utilizadas) e muito menos da parte do cliente. Além disso, o
 cliente fica sem nenhuma indicação de quais ataques foram usados pelo servidor e quanto dano
 os ataques causaram (além das informações adicionais).
 
    Por último, também tivemos que arrumar o idioma do EP, já que em partes a comunicação com
-o usuário se dava em inglês e outras em português. Escolhemos mudar tudo para XXXX.
+o usuário se dava em inglês e outras em português. Decidmos mudar, por fim, tudo para o inglês.
 
 
 \end{document}
