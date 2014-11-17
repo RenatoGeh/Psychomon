@@ -3,6 +3,7 @@ from tests import Test_Pokedata
 from tests import Test_Pokedex
 from tests import Test_Pokemon
 from tests import Test_XMLManager
+from tests import Test_Pokenetwork
 
 import unittest
 
@@ -18,7 +19,7 @@ def runTest(class_name):
 
 "Runs all the tests available"
 def main():
-    for test in ('Pokebattle', 'Pokedata', 'Pokedex', 'Pokemon', 'XMLManager'):
+    for test in ('Pokebattle', 'Pokedata', 'Pokedex', 'Pokemon', 'XMLManager', 'Pokenetwork'):
         runTest(test)
     
 main()
