@@ -2,7 +2,7 @@
 src/__pycache__/
 src/*.py[cod]
 src/tests/__pycache__
-src/tests/*.py[cod]
+src/tests/__pycache__/*
 
 # C extensions
 *.so

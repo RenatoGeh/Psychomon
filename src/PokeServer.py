@@ -3,8 +3,10 @@ import XMLManager
 import io
 import lxml.etree as ET
 from Pokebattle import Pokebattle
-from Pokestadium import Pokestadium
+import Pokestadium
 
+_ip = '0.0.0.0'
+_port = 8080
 app = Flask(__name__)
 
 def _get_xml(pok1, pok2 = None):
@@ -71,8 +73,30 @@ def _process_attack(i):
         print('Invalid XML or attack id')
         return 'Invalid XML or attack id', 423
 
+@app.route('/shutdown', methods=['POST'])
+def _shutdown():
+    func = request.environ.get('werkzeug.server.shutdown')
 
+    if func is None:
+        raise RuntimeError('Werkzeug server error.')
 
-def start_server():
+    func()
+
+    return 'Server shutting down...'
+
+def get_ip():
+    return _ip
+
+def get_port():
+    return _port
+
+def start_server(ip = '0.0.0.0', p = 8080):
+    global _ip
+    global _port
+
     print('----- Server Mode -----\n')
-    app.run('0.0.0.0', port = 8080, debug = True, use_reloader = False)
+
+    _ip = ip
+    _port = p
+
+    app.run(ip, port = p, debug = True, use_reloader = False)

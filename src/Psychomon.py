@@ -1,5 +1,5 @@
-from Pokedex import Pokedex
-from Pokestadium import Pokestadium
+import Pokedex
+import Pokestadium
 import PokeServer
 import PokeClient
 

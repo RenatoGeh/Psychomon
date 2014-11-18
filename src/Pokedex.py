@@ -1,57 +1,56 @@
 from Pokedata import *
 from Pokemon import Pokemon
 
-class Pokedex:
-    "List of Pokemons."
-    __pokemons = {}
+"List of pokemons."
+_pokemons = {}
 
-    "Read single pokemon from stdin"
-    @staticmethod
-    def read_pokemon():
-        try:
-            name = input()
-            level = int(input())
-            hp = int(input())
-            atk = int(input())
-            df = int(input())
-            spd = int(input())
-            spc = int(input())
-            typ = (int(input()), int(input()))
-            
-            att = Attribute(hp, atk, df, spd, spc)
+"Read single pokemon from stdin"
+def read_pokemon():
+    global _pokemons
 
-            n_attacks = int(input())
-            attacks = []
-
-            for i in range(n_attacks):
-                atk_name = input()
-                atk_typ = int(input())
-                acu = int(input())
-                pwr = int(input())
-                pp = int(input())
-
-                attacks.append(Attack(atk_name, atk_typ, acu, pwr, pp))
-            
-            Pokedex.__pokemons[name.lower()] = Pokemon(name, level, att, attacks, *typ)
-
-            return True
-        except (EOFError, ValueError):
-            return False
+    try:
+        name = input()
+        level = int(input())
+        hp = int(input())
+        atk = int(input())
+        df = int(input())
+        spd = int(input())
+        spc = int(input())
+        typ = (int(input()), int(input()))
         
+        att = Attribute(hp, atk, df, spd, spc)
 
-    "Reads from stdin a list of Pokemons."
-    @staticmethod
-    def read_all():
-        while(Pokedex.read_pokemon()):
-            pass
+        n_attacks = int(input())
+        attacks = []
 
-    @staticmethod
-    def get(pokename):
-        poke = Pokedex.__pokemons.get(pokename.lower())
-        return poke.copy() if poke else None
+        for i in range(n_attacks):
+            atk_name = input()
+            atk_typ = int(input())
+            acu = int(input())
+            pwr = int(input())
+            pp = int(input())
 
-    "Returns a pokemon list that can be iterated"
-    @staticmethod
-    def get_pokemons():
-        return Pokedex.__pokemons.values()
+            attacks.append(Attack(atk_name, atk_typ, acu, pwr, pp))
+        
+        _pokemons[name.lower()] = Pokemon(name, level, att, attacks, *typ)
+
+        return True
+    except (EOFError, ValueError):
+        return False
+    
+
+"Reads from stdin a list of Pokemons."
+def read_all():
+    while(read_pokemon()):
+        pass
+
+def get(pokename):
+    global _pokemons
+    poke = _pokemons.get(pokename.lower())
+    return poke.copy() if poke else None
+
+"Returns a pokemon list that can be iterated"
+def get_pokemons():
+    global _pokemons
+    return _pokemons.values()
 

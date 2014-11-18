@@ -1,10 +1,12 @@
 import unittest
-from Pokedex import Pokedex
-from Pokemon import Pokemon
-from Pokedata import *
+import Pokedex
+
 import XMLManager
 import io
 import lxml.etree as ET
+
+from Pokemon import Pokemon
+from Pokedata import *
 
 class TestXMLManager(unittest.TestCase):
     def test_get_xml(self):
