@@ -2,7 +2,7 @@ import unittest
 import io
 import sys
 
-from Pokedex import Pokedex
+import Pokedex
 from Pokemon import Pokemon
 from Pokedata import *
 

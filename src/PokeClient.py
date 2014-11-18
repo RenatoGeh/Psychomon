@@ -1,6 +1,6 @@
 import requests
 import XMLManager
-from Pokestadium import Pokestadium
+import Pokestadium
 import lxml.etree as ET
 from Pokebattle import Pokebattle
 

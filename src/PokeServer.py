@@ -3,7 +3,7 @@ import XMLManager
 import io
 import lxml.etree as ET
 from Pokebattle import Pokebattle
-from Pokestadium import Pokestadium
+import Pokestadium
 
 _ip = '0.0.0.0'
 _port = 8080

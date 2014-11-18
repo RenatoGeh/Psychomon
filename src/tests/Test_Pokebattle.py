@@ -1,6 +1,7 @@
 import unittest
+import Pokedex
+
 from Pokebattle import Pokebattle
-from Pokedex import Pokedex
 from Pokemon import Pokemon
 from Pokedata import *
 
