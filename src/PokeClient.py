@@ -23,7 +23,7 @@ def start_client():
         pok2 = XMLManager.get_pokemon(xml[1])
         while not Pokebattle.is_battle_over(pok1, pok2):
             Pokebattle.show_less_info(pok1, pok2)
-            i = Pokebattle.get_attack_id(pok1)
+            i = Pokebattle.get_attack_id(pok1, pok2)
             req = requests.post(_full_ip(ip) + 'battle/attack/' + str(i + 1), data = req.text)
             assert(req.status_code != 423)
             xml = ET.fromstring(req.text)

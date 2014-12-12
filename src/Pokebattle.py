@@ -13,17 +13,26 @@ class Pokebattle:
         return i > 0 and i < len(pokemon.atks) and pokemon.atks[i - 1].current_pp > 0
 
     @staticmethod
-    def get_attack_id(pokemon):
+    def get_attack_id(pokemon, opp=None):
         if pokemon.has_moves():
-            while True:
-                x = input('\nEnter the desired attack: ')
-                print()
-                try:
-                    x = int(x)
-                    assert(Pokebattle.is_valid_id(pokemon, x))
-                    return x - 1
-                except (ValueError, AssertionError):
-                    print('You can\'t use that move!')
+            if opp == None:
+                while True:
+                    x = input('\nEnter the desired attack: ')
+                    print()
+                    try:
+                        x = int(x)
+                        assert(Pokebattle.is_valid_id(pokemon, x))
+                        return x - 1
+                    except (ValueError, AssertionError):
+                        print('You can\'t use that move!')
+            else:
+                max_id = -1
+                for i in range(0, len(pokemon.atks) - 1):
+                    if pokemon.atks[i].current_pp > 0 and (max_id == -1 or 
+                        pokemon.atks[i].get_average_damage(pokemon, opp) > pokemon.atks[max_id].get_average_damage(pokemon, opp)):
+                        max_id = i
+                print('You chose %s.' % pokemon.atks[max_id].name)
+                return max_id
         else:
             # If a pokemon has no moves left, it must use struggle
             print('You can\'t use any move!')

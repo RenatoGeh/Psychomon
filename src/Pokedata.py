@@ -50,16 +50,10 @@ class Attack:
 
     USES_SPC = {'Water', 'Grass', 'Fire', 'Ice', 'Electric', 'Psychic', 'Dragon', 'Dark'}
 
-    "Attacks target opponent."
-    def attack(self, me, opp):
-        print('\n%s uses %s.' % (me.name, self.name))
-        self.current_pp = self.current_pp - 1
-
-        chance_to_hit = self.acu / 100 # Accuracy and Evasion are always 100
-        if random.random() > chance_to_hit:
-            print('\n%s missed!' % me.name)
-            return
-
+    """Returns base damage of attack on target opponent
+    Ignores criticals and the random modifier.
+    """
+    def _get_base_damage(self, me, opp, verboose=True):
         damage = (2 * me.lvl + 10) / 250
         if POKE_TYPES[self.typ] in Attack.USES_SPC:
             damage *= me.current_atts.spc / opp.current_atts.spc
@@ -70,19 +64,41 @@ class Attack:
         stab = 1.5 if (self.typ == me.types[0]) or (self.typ == me.types[1]) else 1
         typ_eff = TYPE_EFF_CHART[self.typ][opp.types[0]] * TYPE_EFF_CHART[self.typ][opp.types[1]]
 
-        if typ_eff > 1:
-            print('It\'s super effective!')
-        elif typ_eff == 0:
-            print('It\'s not effective...')
-        elif typ_eff < 1:
-            print('It\'s not very effective...')
+        if verboose:
+            if typ_eff > 1:
+                print('It\'s super effective!')
+            elif typ_eff == 0:
+                print('It\'s not effective...')
+            elif typ_eff < 1:
+                print('It\'s not very effective...')
+
+        mod = stab * typ_eff
+        return damage * mod
+
+    "Returns average damage of attack."
+    def get_average_damage(self, me, opp):
+        base_dam = self._get_base_damage(me, opp, verboose=False)
+        chance_to_hit = self.acu / 100
+        chance_to_crit = me.current_atts.spd / 512
+        return chance_to_hit * (1 + chance_to_crit) * base_dam
+
+    "Attacks target opponent."
+    def attack(self, me, opp):
+        print('\n%s uses %s.' % (me.name, self.name))
+        self.current_pp = self.current_pp - 1
+
+        chance_to_hit = self.acu / 100 # Accuracy and Evasion are always 100
+        if random.random() >= chance_to_hit:
+            print('\n%s missed!' % me.name)
+            return
+
+        damage = self._get_base_damage(me, opp)
 
         crit = 2 if random.random() < me.current_atts.spd / 512 else 1
         if crit > 1:
             print('Critical Hit!')
-
-        mod = stab * typ_eff * crit * random.uniform(.85, 1)
-        damage = int(damage * mod)
+        
+        damage = int(damage * crit * random.uniform(.85, 1))
 
         print('%s deals %d damage to %s.' % (self.name, damage, opp.name))
         opp.current_atts.hp -= damage

@@ -19,7 +19,7 @@ def _start_battle(poke1):
     # if server's pokemon is the first, attack
     if poke2.current_atts.spd > poke1.current_atts.spd:
         Pokebattle.show_less_info(poke2, poke1)
-        poke2.attack(poke1, Pokebattle.get_attack_id(poke2))
+        poke2.attack(poke1, Pokebattle.get_attack_id(poke2, poke1))
     return _get_xml(poke1, poke2), 200
 
 @app.route('/battle', methods = ['POST'])
@@ -58,7 +58,7 @@ def _process_attack(i):
         if Pokebattle.is_battle_over(pok1, pok2):
             return _battle_over(pok1, pok2)
         Pokebattle.show_less_info(pok2, pok1)
-        pok2.attack(pok1, Pokebattle.get_attack_id(pok2))
+        pok2.attack(pok1, Pokebattle.get_attack_id(pok2, pok1))
         if Pokebattle.is_battle_over(pok1, pok2):
             return _battle_over(pok1, pok2)
         else:
