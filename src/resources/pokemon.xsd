@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 <xs:element name="battle_state">
@@ -82,11 +82,19 @@
             <xs:element name="attacks" minOccurs="1" maxOccurs="4">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="id" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+            
+                  <xs:element name="id" minOccurs="1" maxOccurs="1">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
 
                   <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
 
-                  <xs:element name="type" minOccurs="1" maxOccurs="2">
+                  <xs:element name="type" minOccurs="1" maxOccurs="1">
                     <xs:simpleType>
                       <xs:restriction base="xs:integer">
                         <xs:minInclusive value="0"/>
