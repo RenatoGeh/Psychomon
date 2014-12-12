@@ -17,6 +17,41 @@ Yan Couto          - NUSP 8536023
 \begin{document}
 \maketitle
 
+\section*{Instruções}
+Para rodar o projeto basta usar
+\begin{center}
+\texttt{python3 Psychomon.py}
+\end{center}
+O programa apresentará um menu com as opções, que são:
+\begin{description}
+\item[Read Pokémon] \hfill \\ Lê o Pokémon como está no enunciado
+\item[List Pokémon] \hfill \\ Lista o nome de todos os Pokémons já lidos
+\item[Battle!] \hfill \\ Começa uma batalha com Pokémons que já foram lidos
+(os nomes deles são usados como seus identificadores) \\ Não funciona caso
+nenhum Pokémon tenha sido inserido
+\item[Open Server] \hfill \\ Inicializa o Modo Servidor, é necessário utilizar
+os Pokémons já inseridos para lutar, como em \textbf{Battle!}
+\item[Open Client] \hfill \\ Inicializa o Modo Cliente, é necessário escolher um
+Pokémon que já foi lido, como em \textbf{Battle!}
+\item[Quit] \hfill \\ Termina o programa
+\end{description}
+Para não ter o trabalho de inserir os Pokémons novamente toda vez que quisessemos
+rodar o projeto, criamos um arquivo que já tem alguns Pokémons feitos, o \texttt{Pokefile}.
+Para usá-lo basta rodar
+\begin{center}
+\texttt{cat input/Pokefile - | python3 Psychomon.py}
+\end{center}
+Note que algum texto "inutil" aparecerá no terminal pois o programa imprime a
+interação com o usuário mesmo quando está lendo a entrada do arquivo, mas depois
+disso já existirão 3 Pokémons lidos, basta usar \textbf{List Pokémon} para saber
+seus nomes e começar a usá-los em batalhas.
+\newpage
+Para testar o programa, basta usar
+\begin{center}
+\texttt{python3 Poketest.py}
+\end{center}
+O programa \texttt{Poketest} executa todos os testes que estão na pasta \texttt{tests},
+que usam o pacote \emph{unittest}.
 
 \section{Primeira Fase}
 
@@ -42,7 +77,7 @@ cada parte desa fase iria se interagir, e com o diagrama feito, ficou mais fáci
 a programação e implementação das ideias.
 
     Inicialmente fizemos a base do programa, incluindo a definição de um
-pokemon, seus atributos, seus ataques, o que é um ataque, e como estes
+Pokémon, seus atributos, seus ataques, o que é um ataque, e como estes
 seriam usados. Ainda sem implementar as fórmulas de combate ou outras funções
 mais específicas, criamos duas classes que auxiliariam em organizar as
 batalhas e dados para o programa. A classe "Pokedex" serve para "coletar" e
@@ -62,7 +97,7 @@ quanto pensávamos, mas tirando escrever toda a tabela de type effectiveness
 o resto foi bem rápido. Como já tinhamos deixado preparado o cálculo do ataque
 antes, não foi necessário mudar nada fora da classe ataque, o que ajudou bastante.
 
-    Apesar de vários testes terem sido feitos durante todo esse processo, ao terminar o sistema de batalha mais simples, começamos a criar pokemons com a
+    Apesar de vários testes terem sido feitos durante todo esse processo, ao terminar o sistema de batalha mais simples, começamos a criar Pokémons com a
 finalidade de testar o combate. Essa criação inicial foi feita "criativamente",
 inventando nomes e atributos aleatórios, sem se basear em pokemons existentes.
 Conforme fossemos arrumando alguns erros e bugs, começamos a pegar dados de
@@ -152,7 +187,49 @@ os ataques causaram (além das informações adicionais).
 sistema de módulos de python e como funciona para se dar "import" em subdiretórios.
 
    Por último, também tivemos que arrumar o idioma do EP, já que em partes a comunicação com
-o usuário se dava em inglês e outras em português. Decidmos mudar, por fim, tudo para o inglês.
+o usuário se dava em inglês e outras em português. Decidimos mudar, por fim, tudo para o inglês.
 
+\newpage
+\section{Terceira Fase}
+
+\begin{verbatim}
+                                                   _,'|
+                                                 .'  /
+                        __                     ,'   '
+                       `  `.                 .'    '
+                        \   `.             ,'     '       A inteligência suprema
+                         \    `.          ,      /
+                          .     `.       /      ,
+                          '       ..__../'     /
+                           \     ,"'   '      . _.._
+                            \  ,'             |'    `"._
+                             |/               ,---.._   `.
+                           ,-|           .   '       `-.  \
+                         ,'  |     ,   ,'   :           '__\_
+                         |  /,_   /  ,U|    '            |   .__
+                         `,' `.\ `./..-'  __ \           |   `. `.
+                           `",_|  /     ,"  `.`._       .|     \ |
+                          / /_.| j  ---'.     `._`-----`.`     | |
+                         / // ,|`'  `-/' `.      `"/-+--'    ,'  `.
+                     _,.`,'| / |.'  -,' \  \       \ '._    /     |
+     .--.      _,.-"'   `| L \ \__ ,^.__.\  `.  _,--`._,>+-'  __,-'
+    :    \   ,'          |  | \          /.   `'      '.  `--'| \
+    '    | ,-.. `'   _,--' ,'  \        `.\            7      |,.\
+     `._ '.  .`.    .>  `-.-    |-.""---..-\        _>`       `.-'
+        `.,' | l  ,' ,>         | `.___,....\._    ,--``-.
+       j | .'|_|.'  /_         /   _|         \`"--+--.   ` ,..._
+       |_`-'/  |     ,' ,.._,.'"""'\           `--'    `-..'     `".
+         "-'_,+'\    '^-     |      \                    /         |
+              |_/         __ \       .                   `.`.._  ,'`.
+                      _.:'__`'        `,.                  |   `'   |
+                     `--`-..`"        /--`               ,-`        |
+                       `---'---------'                   ""| `#     '.
+                                                           `._,       `:._
+                                                             `|   ,..  |  '.
+                                                             j   '.  `-+---'
+                                                             |,.. |
+                                                              `. `;
+                                                                `' 
+\end{verbatim}
 
 \end{document}
