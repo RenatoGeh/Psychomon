@@ -233,27 +233,48 @@ o usuário se dava em inglês e outras em português. Decidimos mudar, por fim, 
                                                                 `' 
 \end{verbatim}
 
-A última fase foi bem mais simples que as outras. Nesta, bastava o programa
-escolher os ataques sozinhos quando usando o Modo Cliente ou Servidor.
+A última fase foi bem mais simples que as outras. Nesta, bastava a "Inteligência Artificial"
+de nosso programa escolher os ataques sozinhos quando usando o Modo Cliente ou Servidor.
 
-Como o jeito que os ataques foram implementados é muito simples, ataques só
-dão dano direto e não causam efeitos secundários, não é possível mudar de
-pokemon durante a batalha e não é necessário \emph{economizar} PPs para usar
-nas próximas batalhas, basta escolher o ataque disponível que tem maior dano
-médio.
+Como o jeito que os ataques foram implementados foi uma tarefa bem simples, pois como os
+ataques só dão dano direto e não causam efeitos secundários, e não é possível mudar de
+pokemon durante a batalha, não existe necessidade de \emph{economizar} PPs para usar
+em batalhas futuras, basta apenas escolher o ataque disponível que tem maior "dano médio".
 
-A fórmula para o dano médio é
+A fórmula para o "dano médio" que definimos foi:
 $$ \text{dano médio} = \text{chance acerto} \times (1 + \text{chance crítico}) \times \text{dano base} $$
 Onde \emph{dano base} é o dano do ataque, sem contar o crítico e o modificador aleatório.
 
-Depois disso bastou melhorar um pouco os testes e o código em geral.
+Com isso feito, focamos em melhorar o programa em uma visão maior, aperfeiçoando um pouco
+os testes e o código onde achamos necessário. Novamente, utilizamos essa última parte do
+projeto para olhar nosso programa de forma mais abrangente, analisando melhor como cada parte
+interage entre sí, tentando aprimorar o que possível.
 
-Testar o programa contra o de outros grupos não faz muito sentido, pois a chance
-os programas não serem compatíveis é razoável, já que algumas coisas não ficaram
-muito padronizadas, como a ordem que os Pokémons tem que ficar no XML (nosso grupo
-assumiu que o Pokémon do Cliente fica sempre na primeira posição e o do Servidor na
-segunda). Além disso, como os ataques são tão simples, a vitória vai se basear apenas
-na sorte (modificador aleatório e críticos) e nos Pokémons escolhidos (que podem
+\newpage
+\section{Comentários Finais}
+
+\begin{verbatim}
+
+
+\end{verbatim}
+
+Como comentário do grupo em relação à essa última parte do projeto, achamos que testar o programa
+contra o de outros grupos não parece que vai dar muito certo, pois existe uma chance considerável
+de os programas não serem compatíveis um com o outro. Isso devido a algumas coisas não ficaram muito
+padronizadas no enunciado, como a ordem que os Pokémons tem que ficar no XML (nosso grupo assumiu
+que o Pokémon do Cliente fica sempre na primeira posição e o do Servidor na segunda).
+Além disso, como os ataques são um tanto simples, sem ter a parte interessante (e desafiante) de uma
+batalha Pokemon com vários modificadores e ataques variados, a vitória vai se inclinar fortemente
+nos fatores aleatórios (modificador aleatório e críticos) e nos Pokémons escolhidos (que podem
 ter valores arbitrarios de atributos se não forem balanceados para todos os grupos).
+
+Apesar desse pormenor, o projeto teve seus estimulos, especialmente no começo, no qual tivemos que
+aprender a fazer nosso primeiro "grande" projeto em Python, utilizando dos conhecimentos de Patterns
+e outras ferramentas que aprendemos no curso, quanto na parte de aprender e trabalhar com bibliotecas
+pra transformar nosso programa em algo online.
+
+Entendemos que o curso foi em boa parte experimental, e por isso teve seus contraventos, mas a ideia
+de fazer um Pokemon acabou sendo bem divertida, e tem potencial para, caso em futuros semestre repita
+tal projeto, de ser algo maior e mais "aventuroso" para os alunos. 
 
 \end{document}
