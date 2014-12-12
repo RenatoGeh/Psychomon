@@ -28,9 +28,11 @@ def main():
                 print('\nEnter your pokémon:')
                 Pokedex.read_pokemon()
         elif opt == 2:
-            print("\nPokémon:")
+            print('\nPokémon:')
             for poke in Pokedex.get_pokemons():
                 print("  %s" % poke.name)
+        elif opt >= 3 and opt <= 5 and len(Pokedex.get_pokemons()) == 0:
+            print('No Pokémons read. Use \'Read Pokémon\' before using this option.')
         elif opt == 3:
             Pokestadium.new_battle()
         elif opt == 4:

@@ -2,6 +2,7 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{mathtools}
 
 \title{Relatório de Projeto - Psychomon}
 
@@ -231,5 +232,28 @@ o usuário se dava em inglês e outras em português. Decidimos mudar, por fim, 
                                                               `. `;
                                                                 `' 
 \end{verbatim}
+
+A última fase foi bem mais simples que as outras. Nesta, bastava o programa
+escolher os ataques sozinhos quando usando o Modo Cliente ou Servidor.
+
+Como o jeito que os ataques foram implementados é muito simples, ataques só
+dão dano direto e não causam efeitos secundários, não é possível mudar de
+pokemon durante a batalha e não é necessário \emph{economizar} PPs para usar
+nas próximas batalhas, basta escolher o ataque disponível que tem maior dano
+médio.
+
+A fórmula para o dano médio é
+$$ \text{dano médio} = \text{chance acerto} \times (1 + \text{chance crítico}) \times \text{dano base} $$
+Onde \emph{dano base} é o dano do ataque, sem contar o crítico e o modificador aleatório.
+
+Depois disso bastou melhorar um pouco os testes e o código em geral.
+
+Testar o programa contra o de outros grupos não faz muito sentido, pois a chance
+os programas não serem compatíveis é razoável, já que algumas coisas não ficaram
+muito padronizadas, como a ordem que os Pokémons tem que ficar no XML (nosso grupo
+assumiu que o Pokémon do Cliente fica sempre na primeira posição e o do Servidor na
+segunda). Além disso, como os ataques são tão simples, a vitória vai se basear apenas
+na sorte (modificador aleatório e críticos) e nos Pokémons escolhidos (que podem
+ter valores arbitrarios de atributos se não forem balanceados para todos os grupos).
 
 \end{document}
