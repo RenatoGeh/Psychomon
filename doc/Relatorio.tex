@@ -236,11 +236,11 @@ o usuário se dava em inglês e outras em português. Decidimos mudar, por fim, 
 A última fase foi bem mais simples que as outras. Nesta, bastava a "Inteligência Artificial"
 de nosso programa escolher os ataques sozinhos quando usando o Modo Cliente ou Servidor.
 
-O jeito que os ataques foram implementados foi uma tarefa bem simples, pois como os
-ataques só dão dano direto e não causam efeitos secundários. Além disso, como não é
-possível mudar de pokemon durante a batalha, não existe necessidade de \emph{economizar}
-PPs para usar em batalhas futuras, basta apenas escolher o ataque disponível que tem maior
-"dano médio".
+O jeito que os ataques foram implementados foi uma tarefa bem simples, pois os ataques só dão
+dano direto e não causam efeitos secundários. Além disso, como não é possível mudar de pokemon
+durante a batalha, e são sempre batalhas individuais entre dois pokemons, não existe necessidade
+de \emph{economizar} PPs para usar em batalhas futuras, basta apenas escolher o ataque disponível
+que tem maior "dano médio" até que a batalha acabe.
 
 A fórmula para o "dano médio" que definimos foi:
 $$ \text{dano médio} = \text{chance acerto} \times (1 + \text{chance crítico}) \times \text{dano base} $$
